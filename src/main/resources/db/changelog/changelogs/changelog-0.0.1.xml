@@ -6,8 +6,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="create patchwork_quilts table" author="Dawn Connell">
-        <createTable tableName="patchwork_quilts">
+    <changeSet id="create quilts table" author="Dawn Connell">
+        <createTable tableName="quilts">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
@@ -15,7 +15,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="size" type="varchar(50)">
-                <constraints primaryKey="true" nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="price" type="decimal(9,4)">
                 <constraints nullable="false"/>

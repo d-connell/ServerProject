@@ -1,6 +1,6 @@
-package com.wackywallaby.bareboneserver.respository;
+package com.dconnell.quiltserver.respository;
 
-import com.wackywallaby.bareboneserver.model.Quilt;
+import com.dconnell.quiltserver.model.Quilt;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,5 +14,7 @@ import java.util.List;
 public interface QuiltRepository extends PagingAndSortingRepository<Quilt, BigInteger> {
 
     List<Quilt> findAll();
+
+    boolean existsByName(String name);
 
 }

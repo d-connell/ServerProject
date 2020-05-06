@@ -1,4 +1,4 @@
-package com.wackywallaby.bareboneserver;
+package com.dconnell.quiltserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

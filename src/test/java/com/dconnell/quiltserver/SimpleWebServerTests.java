@@ -1,4 +1,4 @@
-package com.wackywallaby.bareboneserver;
+package com.dconnell.quiltserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

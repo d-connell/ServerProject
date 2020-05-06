@@ -1,4 +1,4 @@
-package com.wackywallaby.bareboneserver.config;
+package com.dconnell.quiltserver.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

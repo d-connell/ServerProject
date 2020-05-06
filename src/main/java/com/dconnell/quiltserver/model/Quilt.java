@@ -1,4 +1,4 @@
-package com.wackywallaby.bareboneserver.model;
+package com.dconnell.quiltserver.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,16 +9,20 @@ import java.math.BigDecimal;
 public class Quilt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @NotNull
+    @Column(name = "name")
     private String name;
 
     @NotNull
+    @Column(name = "size")
     private String size;
 
     @NotNull
+    @Column(name = "price")
     private BigDecimal price;
 
     public Quilt() {

@@ -1,8 +1,10 @@
 package com.dconnell.quiltserver.model;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "quilts")
@@ -11,7 +13,7 @@ public class Quilt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private BigInteger id;
 
     @NotNull
     @Column(name = "name")
@@ -34,7 +36,7 @@ public class Quilt {
         this.price = price;
     }
 
-    public int getId() {
+    public BigInteger getId() {
         return id;
     }
 

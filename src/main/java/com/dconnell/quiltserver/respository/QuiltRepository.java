@@ -17,4 +17,6 @@ public interface QuiltRepository extends PagingAndSortingRepository<Quilt, BigIn
 
     boolean existsByName(String name);
 
+    Quilt findByName(String name);
+
 }

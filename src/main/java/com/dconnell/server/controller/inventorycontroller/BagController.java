@@ -38,9 +38,9 @@ public class BagController implements InventoryController<Bag> {
     @PostMapping(path = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public BigInteger create(@RequestParam(value = "data") String data,
                              @RequestParam(value = "image") MultipartFile image) throws IOException {
-        String fileName = fileService.generateRandomFileName();
-        fileService.save(image, fileName);
-        BagResponse bagResponse = bagService.create(data, fileName);
+        String imageFileName = fileService.generateRandomFileName();
+        fileService.save(image, imageFileName);
+        BagResponse bagResponse = bagService.create(data, imageFileName);
         return bagResponse.getBag().getId();
     }
 

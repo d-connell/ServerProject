@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class QuiltFactory implements Factory<Quilt, QuiltRequest> {
 
     @Override
-    public Quilt create(QuiltRequest quiltRequest, String fileName, Type type) {
+    public Quilt create(QuiltRequest quiltRequest, String imageFileName, Type type) {
         Quilt quilt = new Quilt();
         quilt.setSize(quiltRequest.getSize());
-        setValues(quilt, quiltRequest, type, fileName);
+        setValues(quilt, quiltRequest, type, imageFileName);
         return quilt;
     }
 

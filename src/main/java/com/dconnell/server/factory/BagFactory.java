@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class BagFactory implements Factory<Bag, BagRequest> {
 
     @Override
-    public Bag create(BagRequest bagRequest, String fileName, Type type) {
+    public Bag create(BagRequest bagRequest, String imageFileName, Type type) {
         Bag bag = new Bag();
         bag.setSize(bagRequest.getSize());
-        setValues(bag, bagRequest, type, fileName);
+        setValues(bag, bagRequest, type, imageFileName);
         return bag;
     }
 

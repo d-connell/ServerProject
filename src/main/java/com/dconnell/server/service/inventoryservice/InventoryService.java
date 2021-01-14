@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public interface InventoryService <TYP extends InventoryEntity, REQTYP extends InventoryRequest, RESTYP extends InventoryResponse> {
 
-    RESTYP create(String data, String fileName) throws IOException;
+    RESTYP create(String data, String imageFileName) throws IOException;
 
     HttpStatus update(TYP inventoryEntity) throws IOException;
 

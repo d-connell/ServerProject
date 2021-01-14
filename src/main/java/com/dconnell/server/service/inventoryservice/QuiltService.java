@@ -30,9 +30,9 @@ public class QuiltService implements InventoryService<Quilt, QuiltRequest, Quilt
 
     @Transactional
     @Override
-    public QuiltResponse create(String data, String fileName) throws JsonProcessingException {
+    public QuiltResponse create(String data, String imageFileName) throws JsonProcessingException {
         QuiltRequest quiltRequest = readRequestData(data);
-        Quilt newQuilt = quiltFactory.create(quiltRequest, fileName, typeRepository.findByName(Type.QUILTS.getLabel()));
+        Quilt newQuilt = quiltFactory.create(quiltRequest, imageFileName, typeRepository.findByName(Type.QUILTS.getLabel()));
         return new QuiltResponse(quiltRepository.save(newQuilt), HttpStatus.OK);
     }
 

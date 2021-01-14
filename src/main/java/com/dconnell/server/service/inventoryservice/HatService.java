@@ -30,9 +30,9 @@ public class HatService implements InventoryService<Hat, HatRequest, HatResponse
 
     @Transactional
     @Override
-    public HatResponse create(String data, String fileName) throws JsonProcessingException {
+    public HatResponse create(String data, String imageFileName) throws JsonProcessingException {
         HatRequest hatRequest = readRequestData(data);
-        Hat newHat = hatFactory.create(hatRequest, fileName, typeRepository.findByName(Type.HATS.getLabel()));
+        Hat newHat = hatFactory.create(hatRequest, imageFileName, typeRepository.findByName(Type.HATS.getLabel()));
         return new HatResponse(hatRepository.save(newHat), HttpStatus.OK);
     }
 

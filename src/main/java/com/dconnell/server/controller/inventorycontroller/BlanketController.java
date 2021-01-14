@@ -38,9 +38,9 @@ public class BlanketController implements InventoryController<Blanket> {
     @PostMapping(path = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public BigInteger create(@RequestParam(value = "data") String data,
                              @RequestParam(value = "image") MultipartFile image) throws IOException {
-        String fileName = fileService.generateRandomFileName();
-        fileService.save(image, fileName);
-        BlanketResponse blanketResponse = blanketService.create(data, fileName);
+        String imageFileName = fileService.generateRandomFileName();
+        fileService.save(image, imageFileName);
+        BlanketResponse blanketResponse = blanketService.create(data, imageFileName);
         return blanketResponse.getBlanket().getId();
     }
 

@@ -38,9 +38,9 @@ public class QuiltController implements InventoryController<Quilt> {
     @PostMapping(path = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public BigInteger create(@RequestParam(value = "data") String data,
                              @RequestParam(value = "image") MultipartFile image) throws IOException {
-        String fileName = fileService.generateRandomFileName();
-        fileService.save(image, fileName);
-        QuiltResponse quiltResponse = quiltService.create(data, fileName);
+        String imageFileName = fileService.generateRandomFileName();
+        fileService.save(image, imageFileName);
+        QuiltResponse quiltResponse = quiltService.create(data, imageFileName);
         return quiltResponse.getQuilt().getId();
     }
 

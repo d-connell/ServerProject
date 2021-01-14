@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class HatFactory implements Factory<Hat, HatRequest> {
 
     @Override
-    public Hat create(HatRequest hatRequest, String fileName, Type type) {
+    public Hat create(HatRequest hatRequest, String imageFileName, Type type) {
         Hat hat = new Hat();
         hat.setSize(hatRequest.getSize());
-        setValues(hat, hatRequest, type, fileName);
+        setValues(hat, hatRequest, type, imageFileName);
         return hat;
     }
 

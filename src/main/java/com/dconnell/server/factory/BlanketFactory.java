@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class BlanketFactory implements Factory<Blanket, BlanketRequest> {
 
     @Override
-    public Blanket create(BlanketRequest blanketRequest, String fileName, Type type) {
+    public Blanket create(BlanketRequest blanketRequest, String imageFileName, Type type) {
         Blanket blanket = new Blanket();
         blanket.setSize(blanketRequest.getSize());
-        setValues(blanket, blanketRequest, type, fileName);
+        setValues(blanket, blanketRequest, type, imageFileName);
         return blanket;
     }
 

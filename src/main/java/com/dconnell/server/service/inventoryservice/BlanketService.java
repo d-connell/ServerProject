@@ -30,9 +30,9 @@ public class BlanketService implements InventoryService<Blanket, BlanketRequest,
 
     @Transactional
     @Override
-    public BlanketResponse create(String data, String fileName) throws JsonProcessingException {
+    public BlanketResponse create(String data, String imageFileName) throws JsonProcessingException {
         BlanketRequest blanketRequest = readRequestData(data);
-        Blanket blanket = blanketFactory.create(blanketRequest, fileName, typeRepository.findByName(Type.BLANKETS.getLabel()));
+        Blanket blanket = blanketFactory.create(blanketRequest, imageFileName, typeRepository.findByName(Type.BLANKETS.getLabel()));
         return new BlanketResponse(blanketRepository.save(blanket), HttpStatus.OK);
     }
 

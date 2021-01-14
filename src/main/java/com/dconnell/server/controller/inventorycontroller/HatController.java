@@ -38,9 +38,9 @@ public class HatController implements InventoryController<Hat> {
     @PostMapping(path = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public BigInteger create(@RequestParam(value = "data") String data,
                              @RequestParam(value = "image") MultipartFile image) throws IOException {
-        String fileName = fileService.generateRandomFileName();
-        fileService.save(image, fileName);
-        HatResponse hatResponse = hatService.create(data, fileName);
+        String imageFileName = fileService.generateRandomFileName();
+        fileService.save(image, imageFileName);
+        HatResponse hatResponse = hatService.create(data, imageFileName);
         return hatResponse.getHat().getId();
     }
 

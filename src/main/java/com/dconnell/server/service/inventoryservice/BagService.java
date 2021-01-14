@@ -30,9 +30,9 @@ public class BagService implements InventoryService<Bag, BagRequest, BagResponse
 
     @Transactional
     @Override
-    public BagResponse create(String data, String fileName) throws JsonProcessingException {
+    public BagResponse create(String data, String imageFileName) throws JsonProcessingException {
         BagRequest bagRequest = readRequestData(data);
-        Bag newBag = bagFactory.create(bagRequest, fileName, typeRepository.findByName(Type.BAGS.getLabel()));
+        Bag newBag = bagFactory.create(bagRequest, imageFileName, typeRepository.findByName(Type.BAGS.getLabel()));
         return new BagResponse(bagRepository.save(newBag), HttpStatus.OK);
     }
 

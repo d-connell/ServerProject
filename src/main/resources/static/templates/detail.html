@@ -1,0 +1,26 @@
+<nav>
+    <ul id="links">
+        <li>
+            <a class="link" href="#!/home">Home</a>
+            <a class="link" href="#!/category/{{category}}">View all {{category}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}">View all {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/create">Create {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/remove">Remove {{type}}</a>
+        </li>
+    </ul>
+</nav>
+
+<h2>{{text}} {{item.name}}</h2>
+
+<div class="item">
+    <img class="image" ng-src="{{item.imageUrl}}" alt="{{item.name}}"/>
+
+    <div>
+        <ul class="information">
+            <li>Size: {{item.size.name}} {{item.size.dimensions}}</li>
+            <li>Price: ${{item.price}}</li>
+            <li>Maker: {{item.maker.name}}</li>
+            <li><a href="#!/category/{{category}}/type/{{type}}/update/{{item.id}}">Update</a></li>
+        </ul>
+    </div>
+</div>

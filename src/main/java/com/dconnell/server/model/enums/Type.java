@@ -15,7 +15,7 @@ public enum Type {
         this.label = label;
     }
 
-    public static Type findService(String input) {
+    public static Type findType(String input) {
         return EnumSet.allOf(Type.class)
                 .stream()
                 .filter(operationType -> operationType.label.equals(input))

@@ -59,7 +59,7 @@ public class ViewController {
     @GetMapping(path = "/details/{typeLabel}")
     public Optional getDetails(@PathVariable String typeLabel, @RequestParam String id)
             throws NullPointerException {
-        Type type = Type.findService(typeLabel);
+        Type type = Type.findType(typeLabel);
         switch (type) {
             case BAGS: {
                 return bagRepository.findById(new BigInteger(id));

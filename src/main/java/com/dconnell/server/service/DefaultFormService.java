@@ -27,7 +27,7 @@ public class DefaultFormService implements FormService {
 
     @Override
     public FormOptionsResponse findFormOptions(String typeLabel) throws NullPointerException {
-        switch (Type.findService(typeLabel)) {
+        switch (Type.findType(typeLabel)) {
             case BAGS: {
                 return new BagFormOptionsResponse(bagSizeRepository.findAll(), makerRepository.findAll());
             }

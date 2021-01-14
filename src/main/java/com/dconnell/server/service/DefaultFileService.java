@@ -22,9 +22,9 @@ public class DefaultFileService implements FileService {
     }
 
     @Override
-    public void save(MultipartFile file, String url) throws IOException {
+    public void save(MultipartFile file, String fileName) throws IOException {
         InputStream fileInputStream = file.getInputStream();
-        File fileToSave = new File(System.getProperty(("user.dir")) + "/uploads/" + url);
+        File fileToSave = new File(System.getProperty(("user.dir")) + "/uploads/" + fileName);
         Files.copy(fileInputStream, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
 

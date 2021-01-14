@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="add category column to types table" author="Dawn Connell">
+        <addColumn tableName="types">
+            <column name="category_id" type="BIGINT" defaultValue="1">
+                <constraints foreignKeyName="fk_category_id" nullable="true"/>
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="types"
+                                 constraintName="fk_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categories"/>
+    </changeSet>
+
+    <changeSet id="populate categories column in types" author="Dawn Connell">
+        <sqlFile path="sql/populate_db_categories_in_types.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>

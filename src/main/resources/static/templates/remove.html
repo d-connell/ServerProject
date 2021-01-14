@@ -1,0 +1,24 @@
+<nav>
+    <ul id="links">
+        <li>
+            <a class="link" href="#!/home">Home</a>
+            <a class="link" href="#!/category/{{category}}">View all {{category}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}">View {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/create">Create {{type}}</a>
+        </li>
+    </ul>
+</nav>
+
+<p>Search: <input ng-model="textFilter"/></p>
+
+<div>
+    <ul class="list">
+        <li class="list_item"  ng-repeat="item in items | filter:textFilter">
+            <button ng-click="delete(item)">Remove {{item.name}}</button>
+            <br>
+            <img class="image" ng-src="{{item.imageUrl}}" alt="{{item.name}}"/>
+        </li>
+    </ul>
+</div>
+
+<p id="message"></p>

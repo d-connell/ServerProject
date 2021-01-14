@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create hat_sizes table" author="Dawn Connell">
+        <createTable tableName="hat_sizes">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="size" type="varchar(50)" defaultValue="new hat size">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimensions" type="varchar(150)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create hats table" author="Dawn Connell">
+        <createTable tableName="hats">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)" defaultValue="new hat">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(9,4)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT" defaultValue="3">
+                <constraints foreignKeyName="fk_hat_type_id" nullable="false"/>
+            </column>
+            <column name="size_id" type="BIGINT">
+                <constraints foreignKeyName="fk_hat_size_id"/>
+            </column>
+            <column name="maker_id" type="BIGINT">
+                <constraints foreignKeyName="fk_hat_maker_id"/>
+            </column>
+            <column name="image_url" type="varchar(50)">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="hats"
+                                 constraintName="fk_hat_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="types"/>
+        <addForeignKeyConstraint baseColumnNames="size_id"
+                                 baseTableName="hats"
+                                 constraintName="fk_hat_size_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hat_sizes"/>
+        <addForeignKeyConstraint baseColumnNames="maker_id"
+                                 baseTableName="hats"
+                                 constraintName="fk_hat_maker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="makers"/>
+    </changeSet>
+
+    <changeSet id="create blankets table" author="Dawn Connell">
+        <createTable tableName="blankets">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)" defaultValue="new blanket">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(9,4)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT" defaultValue="4">
+                <constraints foreignKeyName="fk_blanket_type_id" nullable="false"/>
+            </column>
+            <column name="size_id" type="BIGINT">
+                <constraints foreignKeyName="fk_blanket_size_id"/>
+            </column>
+            <column name="maker_id" type="BIGINT">
+                <constraints foreignKeyName="fk_blanket_maker_id"/>
+            </column>
+            <column name="image_url" type="varchar(50)">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="blankets"
+                                 constraintName="fk_blanket_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="types"/>
+        <addForeignKeyConstraint baseColumnNames="size_id"
+                                 baseTableName="blankets"
+                                 constraintName="fk_blanket_size_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cover_sizes"/>
+        <addForeignKeyConstraint baseColumnNames="maker_id"
+                                 baseTableName="blankets"
+                                 constraintName="fk_blanket_maker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="makers"/>
+    </changeSet>
+
+    <changeSet id="populate hat and blankets tables" author="Dawn Connell">
+        <sqlFile path="sql/populate_hats_and_blankets.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,36 @@
+<nav>
+    <ul id="links">
+        <li class="navigationLinks"><a class="link" href="#!/home">Home</a></li>
+        <li class="navigationLinks"><a class="link" href="#!/admin">Admin</a></li>
+    </ul>
+</nav>
+
+<p >Review deleted items:</p>
+
+<ul id="buttonList">
+    <li ng-repeat="type in types">
+        <button ng-click="view(type)">View {{type.name}}</button>
+    </li>
+</ul>
+
+<div id="itemsToDelete">
+    <p id="message"></p>
+    <ul class="list">
+        <li class="list_item"  ng-repeat="item in items">
+            <button ng-click="restore(item)">Restore {{item.name}}</button>
+            <button ng-click="delete(item)">Remove {{item.name}}</button>
+            <div class="itemToDelete">
+                <img class="imageToDelete" ng-src="{{item.imageUrl}}" alt="{{item.name}}"/>
+
+                <div>
+                    <ul class="informationToDelete">
+                        <li>Name: {{item.name}}</li>
+                        <li>Size: {{item.size.name}}</li>
+                        <li>Price: ${{item.price}}</li>
+                        <li>Maker: {{item.maker.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -6,21 +6,136 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
+    <changeSet id="create types table" author="Dawn Connell">
+        <createTable tableName="types">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)" defaultValue="new type">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image_url" type="varchar(50)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create makers table" author="Dawn Connell">
+        <createTable tableName="makers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)" defaultValue="new maker">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create cover_sizes table" author="Dawn Connell">
+        <createTable tableName="cover_sizes">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="size" type="varchar(50)" defaultValue="new size">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimensions" type="varchar(150)">
+            </column>
+        </createTable>
+    </changeSet>
+
     <changeSet id="create quilts table" author="Dawn Connell">
         <createTable tableName="quilts">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
-            <column name="name" type="varchar(50)">
+            <column name="name" type="varchar(50)" defaultValue="new quilt">
                 <constraints nullable="false"/>
             </column>
-            <column name="size" type="varchar(50)">
+            <column name="price" type="decimal(9,4)" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
-            <column name="price" type="decimal(9,4)">
-                <constraints nullable="false"/>
+            <column name="type_id" type="BIGINT" defaultValue="1">
+                <constraints foreignKeyName="fk_quilt_type_id" nullable="false"/>
+            </column>
+            <column name="size_id" type="BIGINT">
+                <constraints foreignKeyName="fk_quilt_size_id"/>
+            </column>
+            <column name="maker_id" type="BIGINT">
+                <constraints foreignKeyName="fk_quilt_maker_id"/>
+            </column>
+            <column name="image_url" type="varchar(50)">
             </column>
         </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="quilts"
+                                 constraintName="fk_quilt_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="types"/>
+        <addForeignKeyConstraint baseColumnNames="size_id"
+                                 baseTableName="quilts"
+                                 constraintName="fk_quilt_size_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cover_sizes"/>
+        <addForeignKeyConstraint baseColumnNames="maker_id"
+                                 baseTableName="quilts"
+                                 constraintName="fk_quilt_maker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="makers"/>
+    </changeSet>
+
+    <changeSet id="create bag_sizes table" author="Dawn Connell">
+        <createTable tableName="bag_sizes">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="size" type="varchar(50)" defaultValue="new bag size">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimensions" type="varchar(150)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create bags table" author="Dawn Connell">
+        <createTable tableName="bags">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)" defaultValue="new bag">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(9,4)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT" defaultValue="1">
+                <constraints foreignKeyName="fk_bag_type_id" nullable="false"/>
+            </column>
+            <column name="size_id" type="BIGINT">
+                <constraints foreignKeyName="fk_bag_size_id"/>
+            </column>
+            <column name="maker_id" type="BIGINT">
+                <constraints foreignKeyName="fk_bag_maker_id"/>
+            </column>
+            <column name="image_url" type="varchar(50)">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="bags"
+                                 constraintName="fk_bag_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="types"/>
+        <addForeignKeyConstraint baseColumnNames="size_id"
+                                 baseTableName="bags"
+                                 constraintName="fk_bag_size_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bag_sizes"/>
+        <addForeignKeyConstraint baseColumnNames="maker_id"
+                                 baseTableName="bags"
+                                 constraintName="fk_bag_maker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="makers"/>
     </changeSet>
 
 </databaseChangeLog>

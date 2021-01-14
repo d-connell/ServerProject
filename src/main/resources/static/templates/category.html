@@ -1,0 +1,19 @@
+<nav>
+    <ul id="links">
+        <li class="navigationLinks">
+            <a class="link" href="#!/home">Home</a>
+        </li>
+        <li class="navigationLinks" ng-repeat="type in types">
+            <a class="link" href="#!/category/{{category}}/type/{{type.name}}">View {{type.name}}</a>
+        </li>
+    </ul>
+</nav>
+
+<ul class="list">
+    <li class="list_item" ng-repeat="type in types">
+        <a href="#!/category/{{category}}/type/{{type.name}}">
+            View {{type.name}} <br>
+            <img class="image" ng-src="{{type.imageUrl}}" alt="{{type.name}}"/>
+        </a>
+    </li>
+</ul>

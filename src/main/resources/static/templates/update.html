@@ -1,0 +1,60 @@
+<nav>
+    <ul id="links">
+        <li>
+            <a class="link" href="#!/home">Home</a>
+            <a class="link" href="#!/category/{{category}}">View all {{category}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}">View {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/create">Create {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/remove">Remove {{type}}</a>
+        </li>
+    </ul>
+</nav>
+
+<form name="form" class="item">
+
+    <div class="image">
+        <img class="image" id="preview" ng-src="{{item.imageUrl}}" alt="user's chosen file to upload"
+             src=""/>
+    </div>
+
+    <div class="information">
+        <p id="filePicker">
+            <label for="updateFile" class="updateFile">
+                <input type="file" id="updateFile" name="file" accept="image/*"/>
+                <span>Choose a new image</span>
+            </label>
+        </p>
+
+        <p>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" ng-model="item.name" maxlength="50"/>
+            <br><span class="originalDetails">Original Name: {{originalName}}</span>
+        </p>
+
+        <p>
+            <label for="price">Price: $</label>
+            <input type="number" id="price" name="price" ng-model="item.price" min="0"/>
+            <br><span class="originalDetails">Original Price: ${{originalPrice}}</span>
+        </p>
+
+        <p>
+            <label for="size">Size: </label>
+            <select id="size" name="size" ng-model="item.size">
+                <option ng-repeat="size in sizes" value="{{size}}">{{size.name}} {{size.dimensions}}</option>
+            </select>
+            <br><span class="originalDetails">Original Size: {{originalSize}}</span>
+        </p>
+
+        <p>
+            <label for="maker">Maker: </label>
+            <select id="maker" name="maker" ng-model="item.maker">
+                <option ng-repeat="maker in makers" value="{{maker}}">{{maker.name}}</option>
+            </select>
+            <br><span class="originalDetails">Original Maker: {{originalMaker}}</span>
+        </p>
+
+        <button type="submit" ng-disabled="form.$invalid" ng-click="update(item)">Update this quilt</button>
+
+    </div>
+
+</form>

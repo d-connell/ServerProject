@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.wackywallaby'
+group = 'com.dconnell'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -17,6 +17,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
@@ -31,14 +32,21 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-reactor-netty")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.security:spring-security-web'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.springframework.security:spring-security-test'
+	testCompile "org.mockito:mockito-core:2.+"
+	testImplementation 'junit:junit:4.13'
+
 }
 
 test {

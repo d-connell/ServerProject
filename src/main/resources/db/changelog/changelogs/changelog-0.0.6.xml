@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="add delete column to quilts table" author="Dawn Connell">
+        <addColumn tableName="quilts">
+            <column name="is_deleted" type="BIT" defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add delete column to blankets table" author="Dawn Connell">
+        <addColumn tableName="blankets">
+            <column name="is_deleted" type="BIT" defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add delete column to hats table" author="Dawn Connell">
+        <addColumn tableName="hats">
+            <column name="is_deleted" type="BIT" defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add delete column to bags table" author="Dawn Connell">
+        <addColumn tableName="bags">
+            <column name="is_deleted" type="BIT" defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

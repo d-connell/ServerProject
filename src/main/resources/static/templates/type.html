@@ -1,0 +1,33 @@
+<nav>
+    <ul id="links">
+        <li>
+            <a class="link" href="#!/home">Home</a>
+            <a class="link" href="#!/category/{{category}}">View {{category}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/create">Create {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/remove">Remove {{type}}</a>
+        </li>
+    </ul>
+</nav>
+
+<div>
+    <p>Search: <input ng-model="searchText"/></p>
+
+    <p>Sort by:
+        <select ng-model="orderProp">
+            <option value="name">A-Z</option>
+            <option value="price">Price (lowest first)</option>
+            <option value="-price">Price (highest first)</option>
+        </select>
+    </p>
+
+    <ul class="list">
+        <li class="list_item"  ng-repeat="item in items | filter:searchText | orderBy:orderProp">
+            <a href="#!/category/{{category}}/type/{{type}}/{{item.id}}/Viewing:">
+                {{item.name}} <br>
+                <img class="image" ng-src="{{item.imageUrl}}" alt="{{item.name}}"/>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<p id="message"></p>

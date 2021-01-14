@@ -1,0 +1,56 @@
+<nav>
+    <ul id="links">
+        <li>
+            <a class="link" href="#!/home">Home</a>
+            <a class="link" href="#!/category/{{category}}">View all {{category}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}">View {{type}}</a>
+            <a class="link" href="#!/category/{{category}}/type/{{type}}/remove">Remove {{type}}</a>
+        </li>
+    </ul>
+</nav>
+
+<p>
+    Enter some details to add an item to the database!<br>
+    * marks required information
+</p>
+
+<form name="form" class="item">
+
+    <div class="image">
+        <img class="image" id="preview" style="visibility: hidden" alt="preview of file to upload" src=""/>
+    </div>
+
+    <div class="information">
+        <p id="filePicker">
+            <label for="file">* Picture</label>
+            <input type="file" id="file" name="file" ng-required="true" accept="image/*"/>
+        </p>
+
+        <p>
+            <label for="name">* Name: </label>
+            <input type="text" id="name" name="name" ng-model="item.name" maxlength="50" ng-required="true"/>
+        </p>
+
+        <p>
+            <label for="price">* Price: $</label>
+            <input type="number" id="price" name="price" ng-model="item.price" min="0" ng-required="true"/>
+        </p>
+
+        <p>
+            <label for="size">* Size: </label>
+            <select id="size" name="size" ng-model="item.size" ng-required="true">
+                <option ng-repeat="size in sizes" value="{{size}}">{{size.name}} {{size.dimensions}}</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="maker">* Maker: </label>
+            <select id="maker" name="maker" ng-model="item.maker" ng-required="true">
+                <option ng-repeat="maker in makers" value="{{maker}}">{{maker.name}}</option>
+            </select>
+        </p>
+
+        <button type="submit" ng-disabled="form.$invalid" ng-click="create(item)">Create</button>
+    </div>
+
+</form>

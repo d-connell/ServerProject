@@ -20,8 +20,7 @@ public class QuiltController implements InventoryController<Quilt> {
     private final QuiltService quiltService;
     private final DefaultFileService fileService;
 
-    public QuiltController(QuiltService quiltService,
-                           DefaultFileService fileService) {
+    public QuiltController(QuiltService quiltService, DefaultFileService fileService) {
         this.quiltService = quiltService;
         this.fileService = fileService;
     }

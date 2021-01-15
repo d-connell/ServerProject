@@ -20,8 +20,7 @@ public class BlanketController implements InventoryController<Blanket> {
     private final BlanketService blanketService;
     private final DefaultFileService fileService;
 
-    public BlanketController(BlanketService blanketService,
-                             DefaultFileService fileService) {
+    public BlanketController(BlanketService blanketService, DefaultFileService fileService) {
         this.blanketService = blanketService;
         this.fileService = fileService;
     }

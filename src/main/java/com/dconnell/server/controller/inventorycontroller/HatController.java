@@ -20,8 +20,7 @@ public class HatController implements InventoryController<Hat> {
     private final HatService hatService;
     private final DefaultFileService fileService;
 
-    public HatController(HatService hatService,
-                         DefaultFileService fileService) {
+    public HatController(HatService hatService, DefaultFileService fileService) {
         this.hatService = hatService;
         this.fileService = fileService;
     }

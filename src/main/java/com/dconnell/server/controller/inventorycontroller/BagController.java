@@ -20,8 +20,7 @@ public class BagController implements InventoryController<Bag> {
     private final BagService bagService;
     private final DefaultFileService fileService;
 
-    public BagController(BagService bagService,
-                         DefaultFileService fileService) {
+    public BagController(BagService bagService, DefaultFileService fileService) {
         this.bagService = bagService;
         this.fileService = fileService;
     }

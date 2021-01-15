@@ -17,7 +17,8 @@ public class DefaultFormService implements FormService {
     private final HatSizeRepository hatSizeRepository;
 
     public DefaultFormService(MakerRepository makerRepository,
-                              BagSizeRepository bagSizeRepository, CoverSizeRepository coverSizeRepository,
+                              BagSizeRepository bagSizeRepository,
+                              CoverSizeRepository coverSizeRepository,
                               HatSizeRepository hatSizeRepository) {
         this.makerRepository = makerRepository;
         this.bagSizeRepository = bagSizeRepository;

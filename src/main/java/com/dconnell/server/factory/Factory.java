@@ -8,14 +8,13 @@ public interface Factory <TYP extends InventoryEntity, REQTYP extends InventoryR
 
     TYP create(REQTYP request, String imageFileName, Type type);
 
-    default InventoryEntity setValues(InventoryEntity item, InventoryRequest request, Type type, String imageFileName) {
+    default void setValues(InventoryEntity item, InventoryRequest request, Type type, String imageFileName) {
         item.setName(request.getName());
-        item.setType(type);
         item.setPrice(request.getPrice());
         item.setMaker(request.getMaker());
+        item.setType(type);
         item.setImageUrl("/uploads/" + imageFileName);
         item.setDeleted(false);
-        return item;
     }
 
 }
